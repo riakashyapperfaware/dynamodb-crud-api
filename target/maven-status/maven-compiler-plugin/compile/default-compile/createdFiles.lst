@@ -1,0 +1,6 @@
+com\dynamo\api\LambdaHandler.class
+com\dynamo\api\model\ItemVariant.class
+com\dynamo\api\controller\ItemVariantController.class
+com\dynamo\api\config\DynamoDbConfig.class
+com\dynamo\api\DynamodbCrudApiApplication.class
+com\dynamo\api\repository\ItemVariantRepository.class
