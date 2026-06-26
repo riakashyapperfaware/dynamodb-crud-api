@@ -1,5 +1,6 @@
 package com.dynamo.api.controller;
 
+import com.dynamo.api.config.S3Service;
 import com.dynamo.api.config.SecretsManagerService;
 import com.dynamo.api.model.ItemVariant;
 import com.dynamo.api.repository.ItemVariantRepository;
@@ -15,11 +16,14 @@ public class ItemVariantController {
 
     private final ItemVariantRepository repository;
     private final SecretsManagerService secretsManagerService;
+    private final S3Service s3Service;
 
     public ItemVariantController(ItemVariantRepository repository,
-                                  SecretsManagerService secretsManagerService) {
+                                  SecretsManagerService secretsManagerService,
+                                  S3Service s3Service) {
         this.repository = repository;
         this.secretsManagerService = secretsManagerService;
+        this.s3Service = s3Service;
     }
 
     // SECRETS MANAGER - fetch API key at runtime
@@ -70,5 +74,22 @@ public class ItemVariantController {
                                         @PathVariable String variantId) {
         repository.delete(itemId, variantId);
         return ResponseEntity.noContent().build();
+    }
+
+    // S3 - Upload product details
+    @PostMapping("/{itemId}/{variantId}/details")
+    public ResponseEntity<String> uploadDetails(@PathVariable String itemId,
+                                                 @PathVariable String variantId,
+                                                 @RequestBody String content) {
+        s3Service.uploadDetails(itemId, variantId, content);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Details uploaded to S3 for " + itemId + "/" + variantId);
+    }
+
+    // S3 - Get pre-signed URL to access product details
+    @GetMapping("/{itemId}/{variantId}/details")
+    public ResponseEntity<String> getDetailsUrl(@PathVariable String itemId,
+                                                 @PathVariable String variantId) {
+        String url = s3Service.generatePresignedUrl(itemId, variantId);
+        return ResponseEntity.ok(url);
     }
 }
