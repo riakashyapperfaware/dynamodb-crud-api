@@ -5,6 +5,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.SQSEvent;
 import com.dynamo.api.model.ItemVariant;
 import com.dynamo.api.repository.ItemVariantRepository;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
@@ -37,7 +38,12 @@ public class SqsMessageHandler implements RequestHandler<SQSEvent, Void> {
                 String body = message.getBody();
                 context.getLogger().log("Processing message: " + body);
 
-                ItemVariant itemVariant = objectMapper.readValue(body, ItemVariant.class);
+                JsonNode root = objectMapper.readTree(body);
+                String eventType = root.has("eventType") ? root.get("eventType").asText() : "UNKNOWN";
+                context.getLogger().log("Event type: " + eventType);
+
+                JsonNode payloadNode = root.has("payload") ? root.get("payload") : root;
+                ItemVariant itemVariant = objectMapper.treeToValue(payloadNode, ItemVariant.class);
                 repository.save(itemVariant);
 
                 context.getLogger().log("Saved item: " + itemVariant.getItemId() + "/" + itemVariant.getVariantId());

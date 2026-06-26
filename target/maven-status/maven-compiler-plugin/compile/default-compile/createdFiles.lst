@@ -1,3 +1,4 @@
+com\dynamo\api\config\SqsPublisherService.class
 com\dynamo\api\LambdaHandler.class
 com\dynamo\api\config\S3Service.class
 com\dynamo\api\model\ItemVariant.class

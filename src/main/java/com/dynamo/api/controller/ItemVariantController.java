@@ -2,6 +2,7 @@ package com.dynamo.api.controller;
 
 import com.dynamo.api.config.S3Service;
 import com.dynamo.api.config.SecretsManagerService;
+import com.dynamo.api.config.SqsPublisherService;
 import com.dynamo.api.model.ItemVariant;
 import com.dynamo.api.repository.ItemVariantRepository;
 import org.springframework.http.HttpStatus;
@@ -17,13 +18,16 @@ public class ItemVariantController {
     private final ItemVariantRepository repository;
     private final SecretsManagerService secretsManagerService;
     private final S3Service s3Service;
+    private final SqsPublisherService sqsPublisherService;
 
     public ItemVariantController(ItemVariantRepository repository,
                                   SecretsManagerService secretsManagerService,
-                                  S3Service s3Service) {
+                                  S3Service s3Service,
+                                  SqsPublisherService sqsPublisherService) {
         this.repository = repository;
         this.secretsManagerService = secretsManagerService;
         this.s3Service = s3Service;
+        this.sqsPublisherService = sqsPublisherService;
     }
 
     // SECRETS MANAGER - fetch API key at runtime
@@ -37,6 +41,7 @@ public class ItemVariantController {
     @PostMapping
     public ResponseEntity<ItemVariant> create(@RequestBody ItemVariant itemVariant) {
         ItemVariant saved = repository.save(itemVariant);
+        sqsPublisherService.publishEvent("ProductCreatedEvent", saved);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
@@ -65,6 +70,7 @@ public class ItemVariantController {
         itemVariant.setItemId(itemId);
         itemVariant.setVariantId(variantId);
         ItemVariant updated = repository.update(itemVariant);
+        sqsPublisherService.publishEvent("ProductUpdatedEvent", updated);
         return ResponseEntity.ok(updated);
     }
 
