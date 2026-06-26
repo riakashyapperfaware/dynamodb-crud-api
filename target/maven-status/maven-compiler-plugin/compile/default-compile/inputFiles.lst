@@ -4,3 +4,4 @@ D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\DynamodbCrudApiApp
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\LambdaHandler.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\model\ItemVariant.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\repository\ItemVariantRepository.java
+D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\SqsMessageHandler.java
