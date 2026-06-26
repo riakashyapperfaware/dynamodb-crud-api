@@ -5,3 +5,4 @@ com\dynamo\api\config\DynamoDbConfig.class
 com\dynamo\api\SqsMessageHandler.class
 com\dynamo\api\DynamodbCrudApiApplication.class
 com\dynamo\api\repository\ItemVariantRepository.class
+com\dynamo\api\config\SecretsManagerService.class

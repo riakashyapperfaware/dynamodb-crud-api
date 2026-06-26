@@ -1,5 +1,6 @@
 package com.dynamo.api.controller;
 
+import com.dynamo.api.config.SecretsManagerService;
 import com.dynamo.api.model.ItemVariant;
 import com.dynamo.api.repository.ItemVariantRepository;
 import org.springframework.http.HttpStatus;
@@ -13,9 +14,19 @@ import java.util.List;
 public class ItemVariantController {
 
     private final ItemVariantRepository repository;
+    private final SecretsManagerService secretsManagerService;
 
-    public ItemVariantController(ItemVariantRepository repository) {
+    public ItemVariantController(ItemVariantRepository repository,
+                                  SecretsManagerService secretsManagerService) {
         this.repository = repository;
+        this.secretsManagerService = secretsManagerService;
+    }
+
+    // SECRETS MANAGER - fetch API key at runtime
+    @GetMapping("/config/api-key")
+    public ResponseEntity<String> getApiKey() {
+        String apiKey = secretsManagerService.getSecretValue("item-variant-api/config", "apiKey");
+        return ResponseEntity.ok("API Key fetched from Secrets Manager: " + apiKey);
     }
 
     // CREATE
