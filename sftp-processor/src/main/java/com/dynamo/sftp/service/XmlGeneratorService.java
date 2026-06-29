@@ -24,6 +24,8 @@ public class XmlGeneratorService {
 
     public String generate(List<ProductItem> items) {
         try {
+            log.info("Generating XML for {} items", items.size());
+
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.newDocument();
@@ -38,34 +40,30 @@ public class XmlGeneratorService {
                 itemEl.setAttribute("UnitOfMeasure", "EACH");
                 itemEl.setAttribute("Action", "Manage");
 
-                // PrimaryInformation
-                Element primaryInfo = doc.createElement("PrimaryInformation");
-                primaryInfo.setAttribute("Description", item.getTitle());
-                primaryInfo.setAttribute("ShortDescription", item.getTitle());
-                primaryInfo.setAttribute("ExtendedDescription", "");
-                primaryInfo.setAttribute("ManufacturerName", item.getArtist());
-                primaryInfo.setAttribute("DefaultProductClass", "Music");
-                primaryInfo.setAttribute("UnitCost", "");
-                primaryInfo.setAttribute("CountryOfOrigin", item.getCountryOfOrigin());
-                primaryInfo.setAttribute("IsModelItem", "Y");
-                primaryInfo.setAttribute("TaxableFlag", "N");
-                primaryInfo.setAttribute("ItemType", "Music");
-                itemEl.appendChild(primaryInfo);
+                Element primary = doc.createElement("PrimaryInformation");
+                primary.setAttribute("Description", item.getTitle());
+                primary.setAttribute("ShortDescription", item.getTitle());
+                primary.setAttribute("ExtendedDescription", "");
+                primary.setAttribute("ManufacturerName", item.getArtist());
+                primary.setAttribute("DefaultProductClass", "Music");
+                primary.setAttribute("UnitCost", "");
+                primary.setAttribute("CountryOfOrigin", item.getCountryOfOrigin());
+                primary.setAttribute("IsModelItem", "Y");
+                primary.setAttribute("TaxableFlag", "N");
+                primary.setAttribute("ItemType", "Music");
+                itemEl.appendChild(primary);
 
-                // ClassificationCodes
                 Element classification = doc.createElement("ClassificationCodes");
                 classification.setAttribute("TaxProductCode", item.getTaxProductCode());
                 classification.setAttribute("Model", "");
                 itemEl.appendChild(classification);
 
-                // AdditionalAttributeList
                 Element attrList = doc.createElement("AdditionalAttributeList");
                 attrList.appendChild(createAttribute(doc, "digital", "false"));
                 attrList.appendChild(createAttribute(doc, "music", "true"));
                 attrList.appendChild(createAttribute(doc, "taxcode", item.getTaxProductCode()));
                 itemEl.appendChild(attrList);
 
-                // Extn
                 Element extn = doc.createElement("Extn");
                 extn.setAttribute("ExtnVariantId", "");
                 extn.setAttribute("ExtnSku", item.getSku());
@@ -77,10 +75,9 @@ public class XmlGeneratorService {
                 itemEl.appendChild(extn);
 
                 root.appendChild(itemEl);
-                log.info("Generated XML element for item: {}", item.getItemId());
+                log.info("Added item to XML: {}", item.getItemId());
             }
 
-            // Convert to String
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -89,13 +86,13 @@ public class XmlGeneratorService {
             StringWriter writer = new StringWriter();
             transformer.transform(new DOMSource(doc), new StreamResult(writer));
 
-            String xml = writer.getBuffer().toString();
-            log.info("XML generation complete. Total items: {}", items.size());
+            String xml = writer.toString();
+            log.info("XML generation complete. Size: {} bytes", xml.length());
             return xml;
 
         } catch (Exception e) {
-            log.error("Failed to generate XML", e);
-            throw new RuntimeException("XML generation failed", e);
+            log.error("XML generation failed: {}", e.getMessage(), e);
+            throw new RuntimeException("Failed to generate XML", e);
         }
     }
 
