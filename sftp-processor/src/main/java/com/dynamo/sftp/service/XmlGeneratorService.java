@@ -71,7 +71,7 @@ public class XmlGeneratorService {
                 extn.setAttribute("ExtnInventoryPolicy", "");
                 extn.setAttribute("ExtnStreetDate", item.getStreetDate());
                 extn.setAttribute("ExtnShopName", "test.store");
-                extn.setAttribute("ExtnVendor", item.getVendor());
+                extn.setAttribute("ExtnVendor", item.getArtist());
                 itemEl.appendChild(extn);
 
                 root.appendChild(itemEl);

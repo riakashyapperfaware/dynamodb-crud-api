@@ -31,18 +31,18 @@ public class FileParserService {
             try {
                 String[] fields = line.split(DELIMITER, -1);
 
-                // Field positions based on sample file:
-                // 0=N, 1=PROD, 2=TESTUS, 3=date, 4=itemId(with leading 0), 5=sku,
-                // 6=artist, 7=title, 8=?, 9=streetDate, 10=?, 11=P, 12=country,
-                // 13=?, 14=?, 15=?, 16=?, 17=taxcode, 18=?, 19=vendor
+                // Field positions from actual PROD_INPUT.TXT:
+                // 0=N, 1=PROD, 2=TESTUS, 3=date, 4=itemId, 5=sku,
+                // 6=artist, 7=title, 8=qty, 9=streetDate, 10=empty, 11=P, 12=country,
+                // 13=format, 14=?, 15=., 16=002, 17=empty, 18=taxcode, 19=code, 20=vendor
                 String itemId   = fields.length > 4  ? fields[4].trim()  : "";
                 String sku      = fields.length > 5  ? fields[5].trim()  : "";
                 String artist   = fields.length > 6  ? fields[6].trim()  : "";
                 String title    = fields.length > 7  ? fields[7].trim()  : "";
                 String streetDate = fields.length > 9  ? fields[9].trim()  : "";
                 String country  = fields.length > 12 ? fields[12].trim() : "";
-                String taxcode  = fields.length > 17 ? fields[17].trim() : "";
-                String vendor   = fields.length > 19 ? fields[19].trim() : "";
+                String taxcode  = fields.length > 18 ? fields[18].trim() : "";
+                String vendor   = fields.length > 20 ? fields[20].trim() : "";
 
                 ProductItem item = new ProductItem(itemId, sku, artist, title,
                         streetDate, country, taxcode, vendor);
