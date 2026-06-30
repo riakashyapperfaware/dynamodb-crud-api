@@ -1,0 +1,8 @@
+com\dynamo\sftp\service\PipelineService.class
+com\dynamo\sftp\service\SqsNotifierService.class
+com\dynamo\sftp\model\ProductItem.class
+com\dynamo\sftp\service\FileParserService.class
+com\dynamo\sftp\service\S3UploaderService.class
+com\dynamo\sftp\SftpProcessorApplication.class
+com\dynamo\sftp\service\SftpService.class
+com\dynamo\sftp\service\XmlGeneratorService.class

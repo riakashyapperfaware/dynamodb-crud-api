@@ -1,0 +1,8 @@
+D:\Dynamo_Crud\dynamodb-crud-api\sftp-processor\src\main\java\com\dynamo\sftp\model\ProductItem.java
+D:\Dynamo_Crud\dynamodb-crud-api\sftp-processor\src\main\java\com\dynamo\sftp\service\FileParserService.java
+D:\Dynamo_Crud\dynamodb-crud-api\sftp-processor\src\main\java\com\dynamo\sftp\service\PipelineService.java
+D:\Dynamo_Crud\dynamodb-crud-api\sftp-processor\src\main\java\com\dynamo\sftp\service\S3UploaderService.java
+D:\Dynamo_Crud\dynamodb-crud-api\sftp-processor\src\main\java\com\dynamo\sftp\service\SftpService.java
+D:\Dynamo_Crud\dynamodb-crud-api\sftp-processor\src\main\java\com\dynamo\sftp\service\SqsNotifierService.java
+D:\Dynamo_Crud\dynamodb-crud-api\sftp-processor\src\main\java\com\dynamo\sftp\service\XmlGeneratorService.java
+D:\Dynamo_Crud\dynamodb-crud-api\sftp-processor\src\main\java\com\dynamo\sftp\SftpProcessorApplication.java
