@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ItemList>
+    <Item Action="Manage" ItemID="0075678645181" OrganizationCode="TEST" UnitOfMeasure="EACH">
+        <PrimaryInformation CountryOfOrigin="US" DefaultProductClass="Music" Description="Boombox Cover Slim Fit T-Shirt" ExtendedDescription="" IsModelItem="Y" ItemType="Music" ManufacturerName="Street Sweeper Social Club" ShortDescription="Boombox Cover Slim Fit T-Shirt" TaxableFlag="N" UnitCost=""/>
+        <ClassificationCodes Model="" TaxProductCode="6109.10.00"/>
+        <AdditionalAttributeList>
+            <AdditionalAttribute AttributeDomainID="ItemAttribute" AttributeGroupID="ProductMetafield" Name="digital" Value="false"/>
+            <AdditionalAttribute AttributeDomainID="ItemAttribute" AttributeGroupID="ProductMetafield" Name="music" Value="true"/>
+            <AdditionalAttribute AttributeDomainID="ItemAttribute" AttributeGroupID="ProductMetafield" Name="taxcode" Value="6109.10.00"/>
+        </AdditionalAttributeList>
+        <Extn ExtnInventoryItemId="" ExtnInventoryPolicy="" ExtnShopName="test.store" ExtnSku="075678645181" ExtnStreetDate="20090601" ExtnVariantId="" ExtnVendor="Street Sweeper Social Club"/>
+    </Item>
+    <Item Action="Manage" ItemID="0090317350486" OrganizationCode="TEST" UnitOfMeasure="EACH">
+        <PrimaryInformation CountryOfOrigin="US" DefaultProductClass="Music" Description="Awesome As F**k" ExtendedDescription="" IsModelItem="Y" ItemType="Music" ManufacturerName="Green Day" ShortDescription="Awesome As F**k" TaxableFlag="N" UnitCost=""/>
+        <ClassificationCodes Model="" TaxProductCode="85238090"/>
+        <AdditionalAttributeList>
+            <AdditionalAttribute AttributeDomainID="ItemAttribute" AttributeGroupID="ProductMetafield" Name="digital" Value="false"/>
+            <AdditionalAttribute AttributeDomainID="ItemAttribute" AttributeGroupID="ProductMetafield" Name="music" Value="true"/>
+            <AdditionalAttribute AttributeDomainID="ItemAttribute" AttributeGroupID="ProductMetafield" Name="taxcode" Value="85238090"/>
+        </AdditionalAttributeList>
+        <Extn ExtnInventoryItemId="" ExtnInventoryPolicy="" ExtnShopName="test.store" ExtnSku="090317350486" ExtnStreetDate="20110322" ExtnVariantId="" ExtnVendor="Green Day"/>
+    </Item>
+</ItemList>
