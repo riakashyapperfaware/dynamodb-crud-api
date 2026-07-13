@@ -119,6 +119,11 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <archive>
+                                <manifest>
+                                    <mainClass>com.dynamo.api.DynamodbCrudApiApplication</mainClass>
+                                </manifest>
+                            </archive>
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
@@ -130,7 +135,7 @@
                                 </filter>
                             </filters>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>META-INF/spring.handlers</resource>
                                 </transformer>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
