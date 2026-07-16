@@ -1,3 +1,10 @@
+com\dynamo\api\filter\CorrelationIdFilter.class
+com\dynamo\api\health\SqsHealthIndicator.class
+com\dynamo\api\health\DynamoDbHealthIndicator.class
+com\dynamo\api\health\S3HealthIndicator.class
+com\dynamo\api\SqsMessageHandler.class
+com\dynamo\api\repository\ItemVariantRepository.class
+com\dynamo\api\config\SecretsManagerService.class
 com\dynamo\api\config\SqsPublisherService.class
 com\dynamo\api\LambdaHandler.class
 com\dynamo\api\DlqProcessor.class
@@ -5,7 +12,4 @@ com\dynamo\api\config\S3Service.class
 com\dynamo\api\model\ItemVariant.class
 com\dynamo\api\controller\ItemVariantController.class
 com\dynamo\api\config\DynamoDbConfig.class
-com\dynamo\api\SqsMessageHandler.class
 com\dynamo\api\DynamodbCrudApiApplication.class
-com\dynamo\api\repository\ItemVariantRepository.class
-com\dynamo\api\config\SecretsManagerService.class

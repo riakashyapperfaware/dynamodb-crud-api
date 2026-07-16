@@ -5,6 +5,10 @@ D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\config\SqsPublishe
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\controller\ItemVariantController.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\DlqProcessor.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\DynamodbCrudApiApplication.java
+D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\filter\CorrelationIdFilter.java
+D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\health\DynamoDbHealthIndicator.java
+D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\health\S3HealthIndicator.java
+D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\health\SqsHealthIndicator.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\LambdaHandler.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\model\ItemVariant.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\repository\ItemVariantRepository.java
