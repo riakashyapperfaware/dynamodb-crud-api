@@ -6,13 +6,12 @@ A Spring Boot REST API backed by AWS services, deployed on AWS Lambda and ECS Fa
 
 ## Table of Contents
 
-- [Task 1 — DynamoDB-Backed REST API on AWS Lambda](#task-1--dynamodb-backed-rest-api-on-aws-lambda)
-- [Task 2 — Advanced AWS Integrations](#task-2--advanced-aws-integrations)
-- [Task 3 — SFTP to XML Pipeline](#task-3--sftp-to-xml-pipeline)
-- [Task 4 — CI/CD Pipeline](#task-4--cicd-pipeline)
-- [Task 5 — Monitoring, Logging & Alerting](#task-5--monitoring-logging--alerting)
+- [Task 1 - DynamoDB-Backed REST API on AWS Lambda](#task-1--dynamodb-backed-rest-api-on-aws-lambda)
+- [Task 2 - Advanced AWS Integrations](#task-2--advanced-aws-integrations)
+- [Task 3 - SFTP to XML Pipeline](#task-3--sftp-to-xml-pipeline)
+- [Task 4 - CI/CD Pipeline](#task-4--cicd-pipeline)
+- [Task 5 - Monitoring, Logging & Alerting](#task-5--monitoring-logging--alerting)
 - [AWS Infrastructure Summary](#aws-infrastructure-summary)
-- [Cost Note](#cost-note)
 
 ---
 
