@@ -16,7 +16,7 @@ A Spring Boot REST API backed by AWS services, deployed on AWS Lambda and ECS Fa
 
 ---
 
-## Task 1 — DynamoDB-Backed REST API on AWS Lambda
+## Task 1 - DynamoDB-Backed REST API on AWS Lambda
 
 ### What was built
 A Spring Boot REST API with full CRUD operations backed by Amazon DynamoDB, deployed as an AWS Lambda function behind API Gateway.
@@ -50,7 +50,7 @@ A Spring Boot REST API with full CRUD operations backed by Amazon DynamoDB, depl
 
 ---
 
-## Task 2 — Advanced AWS Integrations
+## Task 2 - Advanced AWS Integrations
 
 ### What was built
 Four additional AWS integrations added to the existing API.
@@ -86,7 +86,7 @@ Four additional AWS integrations added to the existing API.
 
 ---
 
-## Task 3 — SFTP to XML Pipeline
+## Task 3 - SFTP to XML Pipeline
 
 ### What was built
 A standalone Spring Boot module (`sftp-processor`) that reads a pipe-delimited flat file from an SFTP server, parses it, converts it to XML, uploads to S3, and sends an SQS notification.
@@ -133,7 +133,7 @@ Lines starting with `N` are data records, pipe-delimited:
 
 ---
 
-## Task 4 — CI/CD Pipeline
+## Task 4 - CI/CD Pipeline
 
 ### What was built
 A GitHub Actions workflow that automatically builds, tests, containerizes, and deploys the application to AWS ECS Fargate on every push to `main`.
@@ -187,7 +187,7 @@ Keeps only the last 3 images — auto-expires older images to stay within ECR fr
 
 ---
 
-## Task 5 — Monitoring, Logging & Alerting
+## Task 5 - Monitoring, Logging & Alerting
 
 ### What was built
 Full observability stack: structured JSON logging, correlation IDs, CloudWatch alarms, SNS email alerts, a CloudWatch dashboard, and Spring Boot Actuator health checks.
@@ -282,19 +282,3 @@ If the health check fails 3 times, ECS automatically replaces the task.
 
 ---
 
-## Cost Note
-
-| Service | Free Tier | How we stay within it |
-|---------|-----------|----------------------|
-| AWS Lambda | 1M requests/month free | Used for API, SQS consumer, DLQ processor |
-| API Gateway | 1M calls/month free (HTTP API) | HTTP API v2 used |
-| DynamoDB | 25GB storage + 25 RCU/WCU free | Small dataset, well within limits |
-| S3 | 5GB storage free | Small JSON files only |
-| SQS | 1M requests/month free | Low message volume |
-| Secrets Manager | 30-day free trial per secret | 1 secret used |
-| ECR | 500MB/month free | Lifecycle policy keeps max 3 images (~112MB each) |
-| ECS Fargate | **Not free tier** | Service scaled to 0 tasks when not testing — $0 at rest |
-| CloudWatch | 5GB log ingestion free, 10 alarms free | 3 alarms, minimal log volume |
-| GitHub Actions | Free on public repos | Used instead of CodePipeline/CodeBuild |
-
-**Estimated monthly cost: $0–$1**
