@@ -12,4 +12,6 @@ D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\health\SqsHealthIn
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\LambdaHandler.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\model\ItemVariant.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\repository\ItemVariantRepository.java
+D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\security\ApiKeyAuthFilter.java
+D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\security\SecurityConfig.java
 D:\Dynamo_Crud\dynamodb-crud-api\src\main\java\com\dynamo\api\SqsMessageHandler.java

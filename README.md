@@ -257,6 +257,48 @@ If the health check fails 3 times, ECS automatically replaces the task.
 
 ---
 
+## Task 6 - API Authentication & Authorization
+
+### What was built
+API key authentication using Spring Security, validating every request against a key stored in AWS Secrets Manager. No credentials are hardcoded anywhere in the codebase.
+
+### How it works
+
+Every request to a protected endpoint must include the header:
+```
+X-API-KEY: <your-api-key>
+```
+
+The filter validates it against the value stored in Secrets Manager at `item-variant-api/config` (key: `apiKey`). If the key is missing or invalid, the request is rejected with `401 Unauthorized`.
+
+### How the API key is generated and stored
+- The API key was created manually and stored in AWS Secrets Manager under `item-variant-api/config`
+- It is never hardcoded in source code or committed to the repository
+- The application fetches it at runtime via `SecretsManagerService.getSecretValue()`
+
+### How it is validated on each request
+1. `ApiKeyAuthFilter` intercepts every incoming request (extends `OncePerRequestFilter`)
+2. Reads the `X-API-KEY` header
+3. Calls Secrets Manager to retrieve the valid key
+4. Compares — if they match, sets the authentication in Spring Security's `SecurityContextHolder`
+5. If missing or invalid, returns `401` immediately without reaching the controller
+
+### HTTP Status Codes
+| Scenario | Status Code |
+|----------|------------|
+| Missing `X-API-KEY` header | `401 Unauthorized` |
+| Invalid API key value | `401 Unauthorized` |
+| Valid API key | `200 OK` (request proceeds) |
+
+### Health check remains unauthenticated
+`/actuator/health` is excluded from the filter via `shouldNotFilter()` and from Spring Security via `permitAll()` — ECS health checks continue to work without any API key.
+
+### Files added
+- `src/main/java/com/dynamo/api/security/ApiKeyAuthFilter.java` — filter that validates the key
+- `src/main/java/com/dynamo/api/security/SecurityConfig.java` — Spring Security configuration
+
+---
+
 ## AWS Infrastructure Summary
 
 | Resource | Name/Value |
